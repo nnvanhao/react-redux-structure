@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { SignInFormContainer, SignInForm } from './styles';
-import { Row, Col, Input, Switch, Button } from 'antd';
-import { MailOutlined, LockOutlined, KeyOutlined, UnlockOutlined } from '@ant-design/icons';
-
+import { SignInFormContainer, SignInForm, Input, Button } from './styles';
+import { Row, Col, Switch } from 'antd';
+import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import routes from '~/services/history';
 class SignInComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {}
+    }
+
+    handleRedirectToForgotPassword = () => {
+      routes.push("/");
     }
 
     render() {
@@ -19,30 +23,19 @@ class SignInComponent extends Component {
                             <span>Welcome Back</span>
                             <span>Log in your account using email & password</span>
                         </header>
-                        <SignInForm style={{ paddingLeft: '20%', paddingRight: '20%' }}>
-                            <Input style={{ marginTop: 10, height: 50, borderRadius: 6 }} size="large" placeholder="Email address" prefix={<MailOutlined />} />
-                            <Input style={{ marginTop: 20, height: 50, borderRadius: 6 }} size="large" placeholder="Password" prefix={<LockOutlined />} />
-
+                        <SignInForm>
+                            <Input size="large" placeholder="Email address" prefix={<MailOutlined />} />
+                            <Input size="large" placeholder="Password" prefix={<LockOutlined />} />
                             <div>
                                 <div>
                                     <Switch size="small" defaultChecked />
                                     <span>Remember Me</span>
                                 </div>
                                 <div>
-                                    <KeyOutlined style={{ fontSize: 20 }} />
-                                    <span>Forget Password</span>
+                                    <span onClick={this.handleRedirectToForgotPassword}>Forget Password</span>
                                 </div>
                             </div>
-
-                            <Button
-                                type="primary"
-                                style={{ width: '100%', height: 50, borderRadius: 6, marginTop: 60, backgroundColor: '#0C6FFF', fontWeight: 'bold', fontSize: 18 }}
-                                icon={<UnlockOutlined />}
-                                loading={false}
-                            >
-                                LOGIN
-                            </Button>
-
+                            <Button type="primary">LOGIN</Button>
                             <div>
                                 <span>
                                     Don't have an account yet?
@@ -51,7 +44,6 @@ class SignInComponent extends Component {
                                     Create an account
                                 </span>
                             </div>
-
                         </SignInForm>
                     </SignInFormContainer>
                 </Col>
@@ -59,11 +51,6 @@ class SignInComponent extends Component {
                     col-6 col-pull-18
                 </Col>
             </Row>
-            // <Container>
-            //     <FormCard>
-
-            //     </FormCard>
-            // </Container>
         )
     }
 }

@@ -167,7 +167,6 @@ class HomeComponent extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         times: state.counterReducers ? state.counterReducers : 0,
     }

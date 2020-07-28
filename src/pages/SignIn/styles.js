@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Background from '~/assets/images/bg.jpg';
+import { Input as InputAnt, Button as ButtonAnt } from 'antd';
 
 export const Container = styled.div`
     width: 100vw;
@@ -50,14 +50,14 @@ export const SignInFormContainer = styled.div`
 
 export const SignInForm = styled.div`
     margin-top: 60px;
+    padding-left: 20%;
+    padding-right: 20%;
 
     div:first-of-type {
         display: flex;
         justify-content: space-between;
-        padding-top: 10px;
-        
+
         div:first-of-type {
-            justify-content: center;
             align-items: center;
             justify-items: center;
 
@@ -70,7 +70,6 @@ export const SignInForm = styled.div`
         }
 
         div:nth-of-type(2) {
-            justify-content: center;
             align-items: center;
             justify-items: center;
 
@@ -78,19 +77,27 @@ export const SignInForm = styled.div`
                 font-size: 13px;
                 font-weight: bold;
                 margin-left: 5px;
-                color: #1777FB;
+                cursor: pointer;
             }
         }
     }
-/* 
-    div:nth-of-type(2) {
-        margin-top: 30px;
+`
 
-        span:last-of-type {
-            color: #1777FB;
-            font-weight: bold;
-            margin-left: 3px;
-            cursor: pointer;
-        }
-    } */
+export const Button = styled(ButtonAnt)` && {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 80px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #0C6FFF;
+  }
+`
+
+export const Input = styled(InputAnt)` && {
+    margin-top: 10px;
+    height: 50px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
 `

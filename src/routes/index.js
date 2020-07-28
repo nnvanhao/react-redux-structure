@@ -22,6 +22,7 @@ export default function Routes() {
                 path={ROUTES.SIGN_UP}
                 component={SignUp} />
             <Route
+                exact
                 path={ROUTES.ROOT}
                 // authorityRoles={[
                 //     ACCESS_ROLES_TYPES.ADMIN,

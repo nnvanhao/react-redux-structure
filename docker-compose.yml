@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
 
-  sample-prod:
-    container_name: smart-build
+  react-redux-structure:
+    container_name: react-redux-structure
     build:
       context: .
       dockerfile: Dockerfile
