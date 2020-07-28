@@ -1,38 +1,40 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Route, Redirect } from 'react-router-dom'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Route, Redirect } from 'react-router-dom';
+import * as routesPermissionUtils from '~/utils/routesPermissionUtils';
+import * as ROUTES from '~/constants/routes';
 
-import AuthLayout from '~/pages/_layouts/auth'
-import DefaultLayout from '~/pages/_layouts/default'
-
-import { store } from '~/store'
+import { store } from '~/store';
 
 export default function RouteWrapper({
     component: Component,
-    isPrivate,
+    authorityRoles,
+    authorityRights,
     ...rest
 }) {
-    const { signed } = store.getState().auth
+    if (authorityRoles.length || authorityRights.length) {
+        const isHasRoutesPermission = routesPermissionUtils.checkRoutesPermission(authorityRoles, authorityRights);
 
-    if (!signed && isPrivate) {
-        return <Redirect to="/" />
+        if (!isHasRoutesPermission) {
+            return <Redirect to={ROUTES.NOT_FOUND} />
+        }
     }
 
-    if (signed && !isPrivate) {
-        return <Redirect to="/dashboard" />
-    }
+    // const { signed } = store.getState().auth
 
-    const Layout = signed ? DefaultLayout : AuthLayout
+    // if (!signed && isPrivate) {
+    //     return <Redirect to="/" />
+    // }
 
     return <Route {...rest} render={props => <Component {...props} />} />
 }
 
 RouteWrapper.propTypes = {
-    isPrivate: PropTypes.bool,
     component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
         .isRequired,
 }
 
 RouteWrapper.defaultProps = {
-    isPrivate: false,
+    authorityRoles: [],
+    authorityRights: [],
 }

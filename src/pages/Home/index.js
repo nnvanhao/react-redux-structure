@@ -1,25 +1,22 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import DeskImage from '../../assets/images/desk.jpg'
-import { Row, Col, Avatar, Typography, Input } from 'antd'
-import * as EU from 'evergreen-ui'
-import { signUpRequest } from '~/store/modules/auth/actions'
-import autoBind from 'auto-bind'
-import { connect } from 'react-redux'
-import '../../styles/tailwindStyles.css'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import DeskImage from '../../assets/images/desk.jpg';
+import { Row, Col, Avatar, Typography, Input } from 'antd';
+import * as EU from 'evergreen-ui';
+import * as authActions from '~/actions/auth/authActions';
+import { connect } from 'react-redux';
+import '../../styles/tailwindStyles.css';
 
 const { Text } = Typography
 
 class HomeComponent extends Component {
     constructor(props) {
         super(props)
-        autoBind(this)
-
         this.state = {}
     }
 
-    handleSignUp = () => {
-        this.props.onDecrement()
+    handleSignIn = () => {
+        this.props.onSignIn('123', '123');
     }
 
     render() {
@@ -123,7 +120,7 @@ class HomeComponent extends Component {
                                         />
                                     </Row>
                                     <EU.Button
-                                        onClick={this.handleSignUp}
+                                        onClick={this.handleSignIn}
                                         style={{
                                             height: 42,
                                             width: 140,
@@ -133,7 +130,6 @@ class HomeComponent extends Component {
                                             marginLeft: 20,
                                         }}
                                         appearance="minimal"
-                                        appearance="primary"
                                         iconAfter="arrow-right"
                                     >
                                         <Text
@@ -170,16 +166,17 @@ class HomeComponent extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+    console.log(state);
     return {
         times: state.counterReducers ? state.counterReducers : 0,
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onDecrement: step => {
-            dispatch(signUpRequest(step))
+        onSignIn: (email, password) => {
+            dispatch(authActions.signIn({ email, password }))
         },
     }
 }

@@ -1,0 +1,1 @@
+export const SIGN_IN = '@auth/action/SIGN_IN';
