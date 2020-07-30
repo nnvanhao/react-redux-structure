@@ -1,7 +1,7 @@
 import * as apiUtils from '~/utils/apiUtils';
 const BUGSNAG_ID = '';
 
-const API_HOST = 'http://localhost';
+const API_HOST = 'http://10.1.1.0';
 const API_PORT = 3000;
 
 export default {

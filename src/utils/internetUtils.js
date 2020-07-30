@@ -1,3 +1,5 @@
-export function checkInternetConnectionStatus() {
-    return true;
+import isOnline from 'is-online'
+
+export async function checkInternetConnectionStatus() {
+    return await isOnline();
 }

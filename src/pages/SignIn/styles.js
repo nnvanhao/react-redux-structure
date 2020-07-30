@@ -21,11 +21,13 @@ export const FormCard = styled.div`
 
 export const SignInFormContainer = styled.div`
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     header {
         display: flex;
         flex-direction: column;
-        padding: 0% 20% 0% 20%;
+        padding: 0% 20% 0% 25%;
 
         span:first-of-type {
             margin-top: 60px;
@@ -50,8 +52,8 @@ export const SignInFormContainer = styled.div`
 
 export const SignInForm = styled.div`
     margin-top: 60px;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 25%;
+    padding-right: 25%;
 
     div:first-of-type {
         display: flex;
@@ -62,10 +64,10 @@ export const SignInForm = styled.div`
             justify-items: center;
 
             span {
-                font-size: 13px;
-                font-weight: bold;
+                font-size: 14px;
                 margin-left: 5px;
-                color: #2B3C57;
+                font-weight: 500;
+                color: #4F5F74;
             }
         }
 
@@ -74,13 +76,19 @@ export const SignInForm = styled.div`
             justify-items: center;
 
             span {
-                font-size: 13px;
-                font-weight: bold;
+                font-size: 14px;
                 margin-left: 5px;
+                font-weight: 500;
+                color: #4F5F74;
                 cursor: pointer;
             }
         }
     }
+
+    /* @media (width: 768px) {
+        padding-left: 15%;
+        padding-right: 15%;
+    } */
 `
 
 export const Button = styled(ButtonAnt)` && {
@@ -100,4 +108,43 @@ export const Input = styled(InputAnt)` && {
     margin-bottom: 15px;
     border-radius: 5px;
   }
+`
+
+export const RedirectCreateAccount = styled.div`
+    margin-top: 30px;
+
+    span:first-of-type {
+        font-size: 14px;
+        font-weight: 400;
+        color: #2B3C57;
+    }
+
+    span:last-of-type {
+        font-size: 14px;
+        font-weight: bold;
+        margin-left: 5px;
+        color: #0C6FFF;
+        cursor: pointer;
+    }
+`
+export const SignInOtherMethod = styled.div`
+    padding-left: 25%;
+    padding-right: 25%;
+    margin-top: auto;
+    margin-bottom: 20px;
+
+    span {
+        margin: 0px 15px 0px 0px;
+        font-weight: 500;
+        color: #0C6FFF;
+        cursor: pointer;
+    }
+
+    span:first-of-type {
+        font-size: 14px;
+        color: #2B3C57;
+        font-weight: 400;
+        font-weight: normal;
+        cursor: default;
+    }
 `

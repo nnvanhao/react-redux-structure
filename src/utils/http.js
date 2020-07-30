@@ -89,22 +89,25 @@ async function async(method, url, body, type, isUpload = false) {
     let urlEncoded = encodeURI(url);
     let headers = getHeaders(method, urlEncoded, body, auth);
     let apiUrl = getUrl(urlEncoded, type);
-    console.log(apiUrl);
-    const isConnected = internetUtils.checkInternetConnectionStatus();
+
+    const isConnected = await internetUtils.checkInternetConnectionStatus();
     if (!isConnected) {
-        toast.error('No internet connection. Please try again!');
+        toast.error('No internet connection. Please recheck internet & try again!');
         return {
             status: HttpStatus.SERVICE_UNAVAILABLE,
             message,
         };
     }
+
+    // Config options
     const options = {
         method,
         mode: 'cors',
         headers,
-        timeout: 60000, // 60s
+        timeout: 30000, // 60s
     };
 
+    // Check api upload file
     if (body && isUpload) {
         options.data = body;
         delete options.headers['Content-Type'];

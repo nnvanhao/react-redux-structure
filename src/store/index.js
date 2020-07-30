@@ -4,8 +4,8 @@ import createSagaMiddleware from 'redux-saga';
 import createStore from './createStore';
 import persistReducers from './persistReducers';
 
-import rootReducer from '~/models/rootReducer';
-import rootSaga from '~/models/rootSaga';
+import rootReducer from '~/store/rootReducer';
+import rootSaga from '~/store/rootSaga';
 
 const sagaMonitor =
     process.env.NODE_ENV === 'development'
