@@ -13,19 +13,22 @@ import { store, persistor } from './store';
 
 import GlobalStyle from './styles/global';
 import 'antd/dist/antd.css';
+import LoadingScreen from '~/components/LoadingScreen';
 
 function App() {
-  return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Router history={history}>
-          <Routes />
-          <GlobalStyle />
-          <ToastContainer autoClose={3000} />
-        </Router>
-      </PersistGate>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <PersistGate persistor={persistor}>
+                <LoadingScreen>
+                    <Router history={history}>
+                        <Routes />
+                        <GlobalStyle />
+                        <ToastContainer autoClose={3000} />
+                    </Router>
+                </LoadingScreen>
+            </PersistGate>
+        </Provider>
+    );
 }
 
 export default App;

@@ -1,24 +1,6 @@
 import styled from 'styled-components';
 import { Input as InputAnt, Button as ButtonAnt } from 'antd';
 
-export const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80");
-    background-size: 100vw 100vh;
-    opacity: 0.7;
-`
-
-export const FormCard = styled.div`
-    width: 60vw;
-    height: 70vh;
-    background-color: #FFFFFF;
-    border-radius: 25px;
-`
-
 export const SignInFormContainer = styled.div`
     height: 100vh;
     display: flex;
@@ -46,6 +28,11 @@ export const SignInFormContainer = styled.div`
         span:last-of-type {
             font-size: 15px;
             color: #989DAE;
+        }
+
+        @media (max-width: 530px) {
+          padding-left: 20%;
+          padding-right: 20%;
         }
     }
 `
@@ -85,10 +72,10 @@ export const SignInForm = styled.div`
         }
     }
 
-    /* @media (width: 768px) {
-        padding-left: 15%;
-        padding-right: 15%;
-    } */
+    @media (max-width: 530px) {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
 `
 
 export const Button = styled(ButtonAnt)` && {
@@ -146,5 +133,10 @@ export const SignInOtherMethod = styled.div`
         font-weight: 400;
         font-weight: normal;
         cursor: default;
+    }
+
+    @media (max-width: 530px) {
+        padding-left: 20%;
+        padding-right: 20%;
     }
 `

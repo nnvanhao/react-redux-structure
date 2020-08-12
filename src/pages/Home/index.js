@@ -6,7 +6,6 @@ import * as EU from 'evergreen-ui';
 import * as authActions from '~/actions/auth/authActions';
 import { connect } from 'react-redux';
 import '../../styles/tailwindStyles.css';
-import LoadingScreen from '~/components/LoadingScreen';
 
 const { Text } = Typography
 
@@ -22,8 +21,6 @@ class HomeComponent extends Component {
 
     render() {
         return (
-            <LoadingScreen>
-
                 <Row>
                     <Col span={7}>
                         <div style={{ position: 'relative' }}>
@@ -165,15 +162,13 @@ class HomeComponent extends Component {
                         </Row>
                     </Col>
                 </Row>
-            </LoadingScreen>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
-        times: state.counterReducers ? state.counterReducers : 0,
+
     }
 }
 

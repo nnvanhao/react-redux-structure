@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { } from './styles';
 import IconLoading from '~/assets/icons/animation_500_kd7l4foy.gif';
+import { connect } from 'react-redux';
 
 class LoadingScreenComponent extends Component {
     constructor(props) {
@@ -9,12 +10,14 @@ class LoadingScreenComponent extends Component {
     }
 
     render() {
-
+        const { isLoading = false } = this.props;
         return (
             <div>
-                <div style={{ zIndex: 1, position: 'absolute', justifyContent: 'center', alignItems: 'center',  width: '100%', height: '100%', display: 'flex' }}>
-                    <img style={{ height: '100px' }} src={IconLoading} />
-                </div>
+                {isLoading && (
+                    <div style={{ zIndex: 1, position: 'absolute', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%', display: 'flex' }}>
+                        <img style={{ height: '100px' }} src={IconLoading} />
+                    </div>
+                )}
                 {this.props.children}
             </div>
         )
@@ -23,4 +26,21 @@ class LoadingScreenComponent extends Component {
 
 LoadingScreenComponent.propTypes = {}
 
-export default LoadingScreenComponent;
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.commonReducer.isLoading,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+LoadingScreenComponent.propTypes = {}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoadingScreenComponent)

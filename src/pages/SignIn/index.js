@@ -3,6 +3,9 @@ import { SignInFormContainer, SignInForm, Input, Button, RedirectCreateAccount, 
 import { Row, Col, Switch } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import routes from '~/services/history';
+import { connect } from 'react-redux';
+import * as authActions from '~/actions/auth/authActions';
+
 class SignInComponent extends Component {
     constructor(props) {
         super(props)
@@ -13,10 +16,14 @@ class SignInComponent extends Component {
         routes.push("/");
     }
 
+    handleSignIn = () => {
+        this.props.onSignIn('123', '123');
+    }
+
     render() {
         return (
             <Row>
-                <Col lg={10} md={12} xs={24}>
+                <Col xl={10} lg={12} md={16} sm={24} xs={24}>
                     <SignInFormContainer>
                         <header>
                             <span>REACT Structure</span>
@@ -35,7 +42,7 @@ class SignInComponent extends Component {
                                     <span onClick={this.handleRedirectToForgotPassword}>Forget Password ?</span>
                                 </div>
                             </div>
-                            <Button type="primary">LOGIN</Button>
+                            <Button type="primary" onClick={this.handleSignIn}>LOGIN</Button>
                             <RedirectCreateAccount>
                                 <span>
                                     Don't have an account yet?
@@ -61,7 +68,7 @@ class SignInComponent extends Component {
                         </SignInOtherMethod>
                     </SignInFormContainer>
                 </Col>
-                <Col lg={14} md={12} xs={0} style={{ backgroundColor: '#3710CD', height: '100vh' }}>
+                <Col xl={14} lg={12} md={8} sm={0} xs={0} style={{ backgroundColor: '#3710CD', height: '100vh' }}>
                     col-6 col-pull-18
                 </Col>
             </Row>
@@ -69,6 +76,22 @@ class SignInComponent extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSignIn: (email, password) => { dispatch(authActions.signIn({ email, password })) },
+    }
+}
+
 SignInComponent.propTypes = {}
 
-export default SignInComponent;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SignInComponent)
